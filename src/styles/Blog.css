@@ -1,0 +1,15 @@
+.fade-overlay {
+  position: relative;
+}
+
+.fade-overlay::after {
+  content: "";
+  position: absolute;
+  bottom: -1px;
+  left: 0;
+  width: 100%;
+  height: 100px;
+  background: linear-gradient(to bottom, transparent, #000);
+  z-index: 5;
+  pointer-events: none;
+}

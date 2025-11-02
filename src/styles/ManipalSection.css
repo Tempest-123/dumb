@@ -1,0 +1,96 @@
+/* ===== SECTION STYLING ===== */
+.manipal-section {
+  width: 100%;
+  min-height: 100vh;
+  background: radial-gradient(circle at top, #000000 0%, #0a0a0a 100%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 4rem 1rem;
+  color: #fff;
+  overflow: hidden;
+}
+
+.manipal-title {
+  font-size: 2.5rem;
+  font-weight: 600;
+  text-align: center;
+  margin-bottom: 3rem;
+  background: linear-gradient(90deg, #ff5a91, #ff7eb3);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  letter-spacing: 0.05em;
+}
+
+/* ===== CARD STRIP ANIMATION ===== */
+.manipal-cards {
+  display: flex;
+  justify-content: center;
+  align-items: stretch;
+  gap: 8px;
+  width: 100%;
+  max-width: 1200px;
+  height: 300px;
+  padding: 0.4em;
+  background: #1a1a1a;
+  border-radius: 10px;
+  box-shadow: 0 0 30px rgba(255, 90, 145, 0.2);
+}
+
+.manipal-cards p {
+  flex: 1;
+  overflow: hidden;
+  cursor: pointer;
+  border-radius: 6px;
+  transition: all 0.5s ease;
+  border: 1px solid #ff5a91;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #212121;
+  position: relative;
+}
+
+.manipal-cards p:hover {
+  flex: 4;
+  background: linear-gradient(180deg, #ff5a91 0%, #ff2e6b 100%);
+  box-shadow: 0 0 20px rgba(255, 90, 145, 0.4);
+}
+
+.manipal-cards p span {
+  min-width: 14em;
+  padding: 0.5em;
+  text-align: center;
+  transform: rotate(-90deg);
+  transition: all 0.5s ease;
+  text-transform: uppercase;
+  color: #ff568e;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+}
+
+.manipal-cards p:hover span {
+  transform: rotate(0deg);
+  color: #fff;
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 900px) {
+  .manipal-cards {
+    flex-direction: column;
+    height: auto;
+  }
+
+  .manipal-cards p {
+    height: 80px;
+  }
+
+  .manipal-cards p span {
+    transform: rotate(0);
+  }
+
+  .manipal-cards p:hover {
+    flex: 2;
+  }
+}

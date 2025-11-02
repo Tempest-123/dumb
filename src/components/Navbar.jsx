@@ -1,9 +1,12 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useRef } from 'react'
 import { motion } from 'framer-motion'
+import { useNavigate } from 'react-router-dom'
 
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false)
   const [isProfileOpen, setIsProfileOpen] = useState(false)
+  const dropdownRef = useRef(null)
+  const navigate = useNavigate()
 
   useEffect(() => {
     const handleScroll = () => {
@@ -12,6 +15,32 @@ const Navbar = () => {
     window.addEventListener('scroll', handleScroll)
     return () => window.removeEventListener('scroll', handleScroll)
   }, [])
+
+  // Close dropdown when clicking outside
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
+        setIsProfileOpen(false)
+      }
+    }
+
+    if (isProfileOpen) {
+      document.addEventListener('mousedown', handleClickOutside)
+    }
+
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside)
+    }
+  }, [isProfileOpen])
+
+  const handleProfileSwitch = (profile) => {
+    setIsProfileOpen(false)
+    if (profile === 'recruiter') {
+      navigate('/recruiter')
+    } else if (profile === 'student') {
+      navigate('/student')
+    }
+  }
 
   const navItems = [
     { name: 'Home', href: '#home' },
@@ -81,7 +110,7 @@ const Navbar = () => {
             </motion.button>
 
             {/* Profile Avatar */}
-            <div className="relative">
+            <div className="relative" ref={dropdownRef}>
               <motion.button
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
@@ -105,10 +134,16 @@ const Navbar = () => {
                   <div className="px-4 py-2 text-gray-300 text-sm border-b border-gray-700">
                     Switch Profile
                   </div>
-                  <button className="w-full text-left px-4 py-2 text-gray-300 hover:bg-gray-800 transition-colors duration-200">
+                  <button 
+                    onClick={() => handleProfileSwitch('student')}
+                    className="w-full text-left px-4 py-2 text-gray-300 hover:bg-gray-800 transition-colors duration-200"
+                  >
                     Student
                   </button>
-                  <button className="w-full text-left px-4 py-2 text-red-600 hover:bg-gray-800 transition-colors duration-200">
+                  <button 
+                    onClick={() => handleProfileSwitch('recruiter')}
+                    className="w-full text-left px-4 py-2 text-red-600 hover:bg-gray-800 transition-colors duration-200"
+                  >
                     Recruiter
                   </button>
                   <button className="w-full text-left px-4 py-2 text-gray-300 hover:bg-gray-800 transition-colors duration-200">
