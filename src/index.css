@@ -1,0 +1,300 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  html {
+    scroll-behavior: smooth;
+  }
+  
+  body {
+    font-family: 'Inter', 'Helvetica Neue', Arial, sans-serif;
+    background-color: #000000;
+    color: #FFFFFF;
+    line-height: 1.2;
+    overflow-x: hidden;
+    font-weight: 400;
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Inter', 'Helvetica Neue', Arial, sans-serif;
+    font-weight: 600;
+    letter-spacing: -0.02em;
+  }
+}
+
+@layer components {
+  .netflix-btn-primary {
+    @apply bg-white text-black px-8 py-3 rounded font-semibold text-lg transition-all duration-200 hover:bg-gray-300 hover:text-black flex items-center gap-2;
+  }
+  
+  .netflix-btn-secondary {
+    @apply bg-gray-600/80 text-white px-8 py-3 rounded font-semibold text-lg transition-all duration-200 hover:bg-gray-500/80 flex items-center gap-2;
+  }
+  
+  .netflix-card {
+    @apply bg-gray-800 rounded transition-all duration-300 hover:scale-105 hover:shadow-2xl;
+  }
+  
+  .netflix-navbar {
+    @apply fixed top-0 left-0 right-0 z-50 transition-all duration-300;
+  }
+  
+  .netflix-navbar-scrolled {
+    @apply bg-black/90 backdrop-blur-sm;
+  }
+  
+  .netflix-hero {
+    @apply relative w-full bg-cover bg-center bg-no-repeat;
+    height: 100vh;
+    min-height: 100vh;
+    position: relative;
+  }
+  
+  .netflix-hero-image {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: 0;
+  }
+  
+  .netflix-hero-overlay {
+    @apply absolute inset-0 bg-gradient-to-r from-black/70 via-black/20 to-transparent;
+  }
+  
+  .netflix-carousel {
+    @apply relative overflow-hidden;
+  }
+  
+  .netflix-carousel-container {
+    @apply flex space-x-2 transition-transform duration-300 ease-out;
+  }
+  
+  .netflix-profile-avatar {
+    @apply w-32 h-32 rounded-lg bg-gray-600 transition-all duration-300 hover:scale-110 hover:shadow-2xl cursor-pointer;
+  }
+  
+  .netflix-top10-badge {
+    @apply absolute -left-16 top-0 w-12 h-full bg-red-600 flex items-center justify-center text-white font-bold text-4xl z-20;
+  }
+  
+  .netflix-top10-ranking-number {
+    @apply text-gray-100 font-black text-7xl sm:text-8xl lg:text-9xl opacity-60 z-0;
+    font-family: 'Poppins', sans-serif;
+    -webkit-text-stroke: 3px rgba(255, 255, 255, 0.7);
+    text-stroke: 3px rgba(255, 255, 255, 0.7);
+    -webkit-text-fill-color: transparent;
+    text-fill-color: transparent;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    width: 60px;
+    min-width: 60px;
+    justify-content: center;
+    flex-shrink: 0;
+    border-radius: 0.125rem; /* rounded-sm */
+  }
+  
+  /* Numbered card wrapper - hover on wrapper triggers card hover */
+  .numbered-card-wrapper {
+    position: relative;
+    gap: 0.25rem; /* Decreased gap between number and card (gap-1 instead of gap-2) */
+  }
+  
+  .numbered-card-wrapper:hover .card-group {
+    transform: scale(1.45) translateY(-16px); /* scale-125 and -translate-y-4 */
+    z-index: 50 !important;
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.75); /* shadow-2xl equivalent */
+  }
+  
+  /* Trigger expanded content reveal when wrapper is hovered */
+  .numbered-card-wrapper:hover .card-group .group {
+    /* This will trigger the group-hover styles on the inner card */
+  }
+  
+  /* Force expanded content to show when wrapper is hovered */
+  .numbered-card-wrapper:hover .numbered-card-expanded-content {
+    opacity: 1 !important;
+    transform: translateY(0) !important;
+    pointer-events: auto !important;
+  }
+  
+  /* Adjust image opacity when wrapper is hovered */
+  .numbered-card-wrapper:hover .card-group img,
+  .numbered-card-wrapper:hover .card-group [class*="bg-cover"] {
+    opacity: 0.9 !important;
+  }
+  
+  .netflix-status-tag {
+    @apply absolute bottom-2 left-1/2 transform -translate-x-1/2 bg-red-600 text-white font-bold text-xs px-4 py-2 rounded-md shadow-lg z-10;
+    font-family: 'Inter', sans-serif;
+    letter-spacing: 0.5px;
+  }
+  
+  .netflix-section-title {
+    @apply text-2xl font-bold text-white mb-6 pl-4 sm:pl-6 lg:pl-8 pr-4 sm:pr-6 lg:pr-8;
+  }
+  
+  .netflix-movie-card {
+    @apply bg-gray-800 rounded-md transition-all duration-300 cursor-pointer flex-shrink-0 overflow-hidden;
+  }
+  
+  .netflix-nav-item {
+    @apply text-white hover:text-gray-300 transition-colors duration-200 font-medium text-sm;
+  }
+}
+
+@layer utilities {
+  .text-netflix-red {
+    color: #E50914;
+  }
+  
+  .bg-netflix-red {
+    background-color: #E50914;
+  }
+  
+  .border-netflix-red {
+    border-color: #E50914;
+  }
+  
+  .animate-netflix-fade {
+    animation: netflixFade 0.5s ease-in-out;
+  }
+  
+  .animate-netflix-slide {
+    animation: netflixSlide 0.3s ease-out;
+  }
+  
+  @keyframes netflixFade {
+    0% { opacity: 0; }
+    100% { opacity: 1; }
+  }
+  
+  @keyframes netflixSlide {
+    0% { transform: translateY(20px); opacity: 0; }
+    100% { transform: translateY(0); opacity: 1; }
+  }
+  
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+
+  /* Card hover: dim neighboring cards when one is hovered
+     Only target cards, not the row heading - use more specific selector
+     .card-group is added to actual card containers to distinguish from other groups
+  */
+  .carousel-row:has(.card-group:hover) .card-group:not(:hover) {
+    opacity: 0.5;
+    transform: scale(0.95);
+    transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
+  }
+  
+  /* Ensure carousel rows allow vertical overflow for card expansion */
+  .carousel-row {
+    overflow-y: visible !important;
+    position: relative;
+  }
+  
+  /* Ensure hovered card rises above others with z-index 50
+     This only affects the card being directly hovered - not others in the row
+  */
+  .card-group:hover {
+    z-index: 50 !important;
+    position: relative;
+  }
+  
+  /* Note: Card hover transforms are handled by Tailwind classes on the card itself
+     This ensures only the directly hovered card expands, not affected by row hover
+  */
+  
+  /* For numbered card wrappers - hover on wrapper triggers card hover */
+  .numbered-card-wrapper:hover .card-group {
+    z-index: 50 !important;
+    position: relative;
+  }
+
+  /* Card hover animation */
+  .slide-fwd-center {
+    -webkit-animation: slide-fwd-center 0.45s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+    animation: slide-fwd-center 0.45s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+  }
+
+  .group:hover .slide-fwd-center {
+    -webkit-animation: slide-fwd-center 0.45s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+    animation: slide-fwd-center 0.45s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+  }
+
+  @keyframes slide-fwd-center {
+    0% {
+      -webkit-transform: translateZ(0);
+      transform: translateZ(0);
+    }
+    100% {
+      -webkit-transform: translateZ(160px);
+      transform: translateZ(160px);
+    }
+  }
+
+  /* Loading screen animations */
+  .tracking-in-expand {
+    -webkit-animation: tracking-in-expand 0.7s cubic-bezier(0.215, 0.610, 0.355, 1.000) both;
+    animation: tracking-in-expand 0.7s cubic-bezier(0.215, 0.610, 0.355, 1.000) both;
+  }
+
+  @keyframes tracking-in-expand {
+    0% {
+      letter-spacing: -0.5em;
+      opacity: 0;
+    }
+    40% {
+      opacity: 0.6;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
+
+  .slide-out-fwd-center {
+    -webkit-animation: slide-out-fwd-center 0.7s cubic-bezier(0.550, 0.085, 0.680, 0.530) both;
+    animation: slide-out-fwd-center 0.7s cubic-bezier(0.550, 0.085, 0.680, 0.530) both;
+  }
+
+  @-webkit-keyframes slide-out-fwd-center {
+    0% {
+      -webkit-transform: translateZ(1);
+      transform: translateZ(1);
+      opacity: 1;
+    }
+    100% {
+      -webkit-transform: translateZ(600px);
+      transform: translateZ(600px);
+      opacity: 0;
+    }
+  }
+
+  @keyframes slide-out-fwd-center {
+    0% {
+      -webkit-transform: translateZ(1);
+      transform: translateZ(1);
+      opacity: 1;
+    }
+    100% {
+      -webkit-transform: translateZ(600px);
+      transform: translateZ(600px);
+      opacity: 0;
+    }
+  }
+}

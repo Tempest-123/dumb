@@ -1,0 +1,18 @@
+[
+  {
+    "id": 1,
+    "institution": "MIT Manipal",
+    "degree": "B.Tech Computer Science",
+    "duration": "2023 - 2027",
+    "image": "/images/education/manipal1.jpg",
+    "description": "Pursuing Bachelor of Technology in Computer Science with focus on software development and system design."
+  },
+  {
+    "id": 2,
+    "institution": "Thakur Public School",
+    "degree": "Science Stream",
+    "duration": "2020 - 2022",
+    "image": "/images/education/thakurpublicschool.jpg",
+    "description": "Completed primary, secondary and higher secondary education with Physics, Chemistry, and Mathematics."
+  }
+]
