@@ -9,7 +9,7 @@ const HeroSection = () => {
       <div className="carousel-3d-container">
         <div className="card-3d">
           {/* 🔹 Replace each div background with your own images */}
-          <div style={{ backgroundImage: 'url("/public/images/portfolio/CR.jpeg")', backgroundSize: "cover" }}></div>
+          <div style={{ backgroundImage: 'url("/images/portfolio/CR.jpeg")', backgroundSize: "cover" }}></div>
           <div style={{ backgroundImage: 'url("/public/images/portfolio/bhanap.jpeg")', backgroundSize: "cover" }}></div>
           <div style={{ backgroundImage: 'url("/public/images/pics/airport.jpeg")', backgroundSize: "cover" }}></div>
           <div style={{ backgroundImage: 'url("/public/images/pics/class-photo.jpeg")', backgroundSize: "cover" }}></div>
